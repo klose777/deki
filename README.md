@@ -2,7 +2,7 @@
 
 **deki** is an ML model (or several models) that detects UI elements in screenshots (such as containers, text, and icons) and provides structured descriptions of those elements. It can help with:
 
-- Generating code for LLMs that need structured UI information.
+- Generating code by using LLMs that need structured UI information.
 - Automating device interactions by providing precise bounding box coordinates.
 - Assisting visually impaired users by describing the UI.
 
