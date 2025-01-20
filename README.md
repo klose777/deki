@@ -153,7 +153,7 @@ model.
 The base model is a YOLO model that was trained on 486 images and was tested on 60 images.
 
 Current YOLO model accuracy:
-![example5](./YOLO_accuracy.png)
+![example5](./input/YOLO_accuracy.png)
 
 ---
 

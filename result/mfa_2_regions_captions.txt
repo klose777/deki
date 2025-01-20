@@ -1,0 +1,159 @@
+Image path: ./mfa_2.jpeg
+Image Size: width=598, height=1280
+********
+View: region_1_class_0 (View)
+Coordinates: x_min=52, y_min=881, x_max=543, y_max=973
+Size: width=491, height=92
+1. The background color of the container is black.
+2. The container is opaque.
+********
+View: region_2_class_0 (View)
+Coordinates: x_min=59, y_min=1096, x_max=538, y_max=1172
+Size: width=479, height=76
+1. The background color of the container is plum.
+2. The container is opaque.
+********
+View: region_3_class_0 (View)
+Coordinates: x_min=52, y_min=241, x_max=544, y_max=333
+Size: width=492, height=92
+1. The background color of the container is black.
+2. The container is opaque.
+********
+View: region_4_class_0 (View)
+Coordinates: x_min=54, y_min=376, x_max=544, y_max=468
+Size: width=490, height=92
+1. The background color of the container is black.
+2. The container is opaque.
+********
+View: region_5_class_0 (View)
+Coordinates: x_min=54, y_min=511, x_max=543, y_max=603
+Size: width=489, height=92
+1. The background color of the container is black.
+2. The container is opaque.
+********
+View: region_6_class_0 (View)
+Coordinates: x_min=54, y_min=738, x_max=544, y_max=831
+Size: width=490, height=93
+1. The background color of the container is black.
+2. The container is opaque.
+********
+View: region_7_class_0 (View)
+Coordinates: x_min=60, y_min=1193, x_max=538, y_max=1267
+Size: width=478, height=74
+1. The background color of the container is black.
+2. The container is opaque.
+********
+View: region_8_class_0 (View)
+Coordinates: x_min=53, y_min=107, x_max=545, y_max=197
+Size: width=492, height=90
+1. The background color of the container is black.
+2. The container is opaque.
+********
+Text: region_9_class_2 (Text)
+Coordinates: x_min=46, y_min=641, x_max=533, y_max=723
+Size: width=487, height=82
+Extracted Text: Passwords must contain both uppercase and lowercase characters. Passwords must contain at least one number
+Corrected Text: Passwords must contain both uppercase and lowercase characters Passwords must contain at least one number
+********
+Text: region_10_class_2 (Text)
+Coordinates: x_min=75, y_min=407, x_max=261, y_max=441
+Size: width=186, height=34
+Extracted Text: Mobile number
+Corrected Text: Mobile number
+********
+Text: region_11_class_2 (Text)
+Coordinates: x_min=76, y_min=771, x_max=202, y_max=801
+Size: width=126, height=30
+Extracted Text: Password
+Corrected Text: Password
+********
+Text: region_12_class_2 (Text)
+Coordinates: x_min=72, y_min=541, x_max=289, y_max=577
+Size: width=217, height=36
+Extracted Text: PIN code (4 digit)
+Corrected Text: PIN code i digits
+********
+Text: region_13_class_2 (Text)
+Coordinates: x_min=101, y_min=1036, x_max=233, y_max=1064
+Size: width=132, height=28
+Extracted Text: Secure data
+Corrected Text: Secure data
+********
+Image: region_14_class_1 (ImageView)
+Coordinates: x_min=61, y_min=1030, x_max=97, y_max=1065
+Size: width=36, height=35
+Prediction: Icon/Mobile UI Element
+The mobile UI element in the image is a green checkmark button with rounded corners. It appears to be an interactive component, likely used for confirming or accepting actions within an app or game. The button's color and design suggest it may be a prominent call-to-action (CTA) or a way to indicate success or completion of a task.
+********
+Image: region_15_class_1 (ImageView)
+Coordinates: x_min=483, y_min=769, x_max=526, y_max=803
+Size: width=43, height=34
+Prediction: Icon/Mobile UI Element
+The mobile UI element appears to be an eye, as indicated by the circular shape and the central pupil. It is likely a stylized representation of an eye used for visual purposes in a digital interface.
+********
+Text: region_16_class_2 (Text)
+Coordinates: x_min=74, y_min=913, x_max=151, y_max=947
+Size: width=77, height=34
+Extracted Text: Again
+Corrected Text: Again
+********
+Text: region_17_class_2 (Text)
+Coordinates: x_min=75, y_min=272, x_max=149, y_max=305
+Size: width=74, height=33
+Extracted Text: Email
+Corrected Text: Email
+********
+Image: region_18_class_1 (ImageView)
+Coordinates: x_min=483, y_min=911, x_max=526, y_max=944
+Size: width=43, height=33
+Prediction: Icon/Mobile UI Element
+This image depicts a circular or elliptical object with a dark grey interior and lighter grey border, set against a black background. The shape appears to be symmetrical and uniform in size, suggesting it could be a button, icon, or other mobile UI element that serves as an indicator or provides visual feedback to the user.
+********
+Text: region_19_class_2 (Text)
+Coordinates: x_min=243, y_min=1119, x_max=355, y_max=1156
+Size: width=112, height=37
+Extracted Text: Sign up
+Corrected Text: Sign up
+********
+Text: region_20_class_2 (Text)
+Coordinates: x_min=40, y_min=7, x_max=261, y_max=36
+Size: width=221, height=29
+Extracted Text: ACELLIAzercell all
+Corrected Text: ACELLIAzercell all
+********
+Text: region_21_class_2 (Text)
+Coordinates: x_min=75, y_min=138, x_max=199, y_max=170
+Size: width=124, height=32
+Extracted Text: Full name
+Corrected Text: Full name
+********
+Text: region_22_class_2 (Text)
+Coordinates: x_min=248, y_min=1216, x_max=350, y_max=1248
+Size: width=102, height=32
+Extracted Text: Cancel
+Corrected Text: Cancel
+********
+Text: region_23_class_2 (Text)
+Coordinates: x_min=397, y_min=8, x_max=554, y_max=35
+Size: width=157, height=27
+Extracted Text: 897% 01.49
+Corrected Text: 897% 01.49
+********
+Text: region_24_class_2 (Text)
+Coordinates: x_min=50, y_min=53, x_max=272, y_max=98
+Size: width=222, height=45
+Extracted Text: Registration
+Corrected Text: Registration
+********
+Image: region_25_class_1 (ImageView)
+Coordinates: x_min=249, y_min=1217, x_max=274, y_max=1246
+Size: width=25, height=29
+Prediction: Icon/Mobile UI Element
+The letter "C" is displayed in a large, light purple font, set against a black background, giving it a striking contrast and visual impact. This design choice makes the letter stand out and grab attention.
+********
+View: region_26_class_0 (View)
+Coordinates: x_min=4, y_min=9, x_max=597, y_max=1278
+Size: width=593, height=1269
+1. The background color of the container is black.
+2. The container is opaque.
+********
