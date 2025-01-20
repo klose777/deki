@@ -68,9 +68,58 @@ Also, to use this version you need to install llama-3.2-11b via ollama.
 
 You can see examples in the result/ and output/ folders.
 
+Bounding boxes with classes:
 ![example](output/bb_1_yolo.jpeg)
 
+Bounding boxes without classes but with IDs after NMS:
 ![example2](output/bb_1_yolo_updated.jpeg)
+
+Text output will look something like this:
+```text
+Image path: ./bb_1.jpeg
+Image Size: width=1080, height=2178
+********
+View: region_1_class_0 (View)
+Coordinates: x_min=606, y_min=393, x_max=881, y_max=510
+Size: width=275, height=117
+1. The background color of the container is whitesmoke.
+2. The container is opaque.
+********
+...
+********
+Image: region_8_class_1 (ImageView)
+Coordinates: x_min=64, y_min=574, x_max=1026, y_max=931
+Size: width=962, height=357
+Prediction: Normal Image
+The image appears to be an advertisement for a lottery, with the title "Super-Mega-Bomb" Lottery prominently displayed at the top. The background of the image features a bold red color scheme.
+
+* A car:
+	+ The car is depicted in black and white.
+	+ It is positioned centrally in the image.
+	+ The car appears to be a sleek, modern vehicle.
+* A phone:
+	+ The phone is shown in the bottom-right corner of the image.
+	+ It has a red screen with a pink background.
+	+ The phone's design suggests it may be a high-end model.
+* A credit card:
+	+ The credit card is displayed in the top-left corner of the image.
+	+ It features a black and red color scheme.
+	+ The credit card appears to be from "bitbank".
+* Other objects:
+	+ There are several other objects scattered throughout the image, including a tablet, a pair of earbuds, and a small device with a screen.
+	+ These objects appear to be related to technology or electronics.
+
+Overall, the image suggests that the lottery offers prizes that include high-end electronic devices and vehicles. The use of bright colors and modern designs creates a sense of excitement and luxury, implying that the prizes are valuable and desirable.
+********
+...
+********
+Text: region_38_class_2 (Text)
+Coordinates: x_min=69, y_min=1268, x_max=252, y_max=1310
+Size: width=183, height=42
+Extracted Text: 64 partners
+Corrected Text: 64 partners
+********
+```
 
 I have not used the best examples that do not have errors, so as not to give
 people a false impression of the accuracy of the model. The examples you see
