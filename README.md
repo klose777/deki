@@ -1,6 +1,6 @@
 # deki
 
-**deki** is an ML-powered toolkit that detects UI elements in screenshots (such as containers, text, and icons) and provides structured descriptions of those elements. It can help with:
+**deki** is an ML model (or several models) that detects UI elements in screenshots (such as containers, text, and icons) and provides structured descriptions of those elements. It can help with:
 
 - Generating code for LLMs that need structured UI information.
 - Automating device interactions by providing precise bounding box coordinates.
@@ -59,6 +59,7 @@ python3.12 yolo_script.py \
 ```
 
 And don't forget to include your HuggingFace and OpenAI tokens if you use blip2 or ChatGPT.
+
 Also, to use this version you need to install llama-3.2-11b via ollama.
 
 ## Plans
@@ -72,6 +73,11 @@ Also, to use this version you need to install llama-3.2-11b via ollama.
 ## Examples
 
 You can see examples in the result/ and output/ folders.
+
+I have not used the best examples that do not have errors, so as not to give
+people a false impression of the accuracy of the model. The examples you see
+are approximately the standard result that can usually be obtained using this
+model.
 
 ## Contributing
 
