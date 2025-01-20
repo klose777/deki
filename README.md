@@ -78,6 +78,10 @@ Also, to use this version you need to install llama-3.2-11b via ollama.
 
 You can see examples in the result/ and output/ folders.
 
+![example](output/bb_1_yolo.jpeg)
+
+![example2](output/bb_1_yolo_updated.jpeg)
+
 I have not used the best examples that do not have errors, so as not to give
 people a false impression of the accuracy of the model. The examples you see
 are approximately the standard result that can usually be obtained using this
