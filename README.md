@@ -19,7 +19,7 @@
    - **ImageView boxes**: Determine if the element is an icon-like graphic or a real image (e.g., a person or a car).
 
 3. **Image Captioning (Optional)**  
-   Use an image captioning model (e.g., BLIP-2, LLaMA-vision, etc.) to produce an overall description of the screenshot content.
+   Use an image captioning model (e.g., BLIP-2, LLaMA-vision, etc.) to produce an overall description of the ImageView bounding box.
 
 ---
 
@@ -38,6 +38,10 @@ The ML model creates a long description of the screenshot that can be used for v
 Install dependencies (Python 3.12 recommended):
 
 ```bash
+git clone https://github.com/RasulOs/deki.git
+cd deki
+python3.12 -m venv .venv
+source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
@@ -62,17 +66,29 @@ And don't forget to include your HuggingFace and OpenAI tokens if you use blip2 
 
 Also, to use this version you need to install llama-3.2-11b via ollama.
 
+You can see an example of usage for the **code generation** in code_generator.py. 
+Fine-tune the model to get high quality outputs because the image description is quite long.
+
+```bash
+python3.12 code_generator.py ./bb_2.jpeg ./result/bb_2_regions_captions.txt ./result/gpt_output_bb_2.txt Android
+```
 ---
 
 ## Examples
 
 You can see examples in the result/ and output/ folders.
 
-Bounding boxes with classes:
+Bounding boxes with classes for bb_1:
 ![example](output/bb_1_yolo.jpeg)
 
-Bounding boxes without classes but with IDs after NMS:
+Bounding boxes without classes but with IDs after NMS for bb_1:
 ![example2](output/bb_1_yolo_updated.jpeg)
+
+Bounding boxes with classes for bb_2:
+![example3](output/bb_2_yolo.jpeg)
+
+Bounding boxes without classes but with IDs after NMS for bb_2:
+![example4](output/bb_2_yolo_updated.jpeg)
 
 Text output will look something like this:
 ```text
@@ -128,10 +144,19 @@ model.
 
 ---
 
+## YOLO model accuracy
+
+The base model is a YOLO model that was trained on 486 images and was tested on 60 images.
+
+Current YOLO model accuracy:
+![example5](./YOLO_accuracy.png)
+
+---
+
 ## Future plans
 
     1. Make the image captioning functionality optional.
-    2. Increase accuracy of the YOLO model (current model was trained on only 486 images).
+    2. Increase accuracy of the YOLO model by increasing the size of the training dataset up to 1000 images/labels. 
     3. Increase accuracy of the icon detection model by improving training data quality.
     4. Fine-tune the image captioning model for more accurate UI descriptions.
     5. Fine-tune an LLM for generating UI code from detected elements.

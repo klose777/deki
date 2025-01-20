@@ -58,7 +58,11 @@ def init():
     model = YOLO(args.weights_file)
 
     # Perform inference
-    results = model(source=args.input_image, save_txt=True, project=args.output_dir, name="yolo_labels_output")
+    results = model(source=args.input_image, 
+                    save_txt=True, 
+                    project=args.output_dir, 
+                    name="yolo_labels_output",
+                    exist_ok=True)
 
     # Save the initial inference image
     img = results[0].plot(font_size=2, line_width=1)
@@ -69,12 +73,16 @@ def init():
     # Directory containing labels files
     labels_dir = os.path.join(args.output_dir, 'yolo_labels_output', 'labels')
 
-    # Assuming there's only one labels file for the image
-    label_files = glob.glob(os.path.join(labels_dir, '*.txt'))
-    if not label_files:
-        print("No label files found.")
-        exit()
+    # Search for txt files whose filenames contain the original base name
+    label_files = [
+        f for f in glob.glob(os.path.join(labels_dir, '*.txt'))
+        if base_name in os.path.basename(f)
+    ]
 
+    if not label_files:
+        print(f"No label files found for the image '{base_name}'.")
+        exit()
+    
     label_file = label_files[0]
 
     with open(label_file, 'r') as f:

@@ -168,8 +168,12 @@ os.makedirs(cropped_imageview_images_dir, exist_ok=True)
 result_dir = "result"
 os.makedirs(result_dir, exist_ok=True)
 
+# Extract the base filename (without extension) from the input image
+base_name = os.path.splitext(os.path.basename(input_image_path))[0]
+# Create a captions filename like "bb_1_regions_captions.txt"
+captions_filename = f"{base_name}_regions_captions.txt"
 # Prepare the captions file
-captions_file_path = os.path.join(result_dir, "regions_captions.txt")
+captions_file_path = os.path.join(result_dir, captions_filename)
 
 # %%
 # Function to open and optionally upscale an image
