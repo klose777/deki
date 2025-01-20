@@ -9,7 +9,7 @@ def encode_image(image_path):
     with open(image_path, "rb") as image_file:
         return base64.b64encode(image_file.read()).decode('utf-8')
 
-def main():
+def init():
     # Parse command-line arguments
     parser = argparse.ArgumentParser(description='Generate code for a mobile screen based on an image and its description.')
     parser.add_argument('input_image', help='Path to the input image.')
@@ -91,4 +91,4 @@ def main():
         sys.exit(1)
 
 if __name__ == '__main__':
-    main()
+    init()

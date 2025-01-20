@@ -67,11 +67,15 @@ And don't forget to include your HuggingFace and OpenAI tokens if you use blip2 
 Also, to use this version you need to install llama-3.2-11b via ollama.
 
 You can see an example of usage for the **code generation** in code_generator.py. 
-Fine-tune the model to get high quality outputs because the image description is quite long.
+Fine-tune the model to get high quality outputs because the image description is quite long
+and complex.
 
 ```bash
 python3.12 code_generator.py ./bb_2.jpeg ./result/bb_2_regions_captions.txt ./result/gpt_output_bb_2.txt Android
 ```
+It will use the image and the image description to generate the code for the UI screen
+for the Android platform.
+
 ---
 
 ## Examples
@@ -160,6 +164,7 @@ Current YOLO model accuracy:
     3. Increase accuracy of the icon detection model by improving training data quality.
     4. Fine-tune the image captioning model for more accurate UI descriptions.
     5. Fine-tune an LLM for generating UI code from detected elements.
+    6. Add the command mode to generate short image description files.
 
 ---
 
