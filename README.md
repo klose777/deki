@@ -64,16 +64,6 @@ Also, to use this version you need to install llama-3.2-11b via ollama.
 
 ---
 
-## Future plans
-
-    1. Make the image captioning functionality optional.
-    2. Increase accuracy of the YOLO model (current model was trained on only 486 images).
-    3. Increase accuracy of the icon detection model by improving training data quality.
-    4. Fine-tune the image captioning model for more accurate UI descriptions.
-    5. Fine-tune an LLM for generating UI code from detected elements.
-
----
-
 ## Examples
 
 You can see examples in the result/ and output/ folders.
@@ -86,6 +76,16 @@ I have not used the best examples that do not have errors, so as not to give
 people a false impression of the accuracy of the model. The examples you see
 are approximately the standard result that can usually be obtained using this
 model.
+
+---
+
+## Future plans
+
+    1. Make the image captioning functionality optional.
+    2. Increase accuracy of the YOLO model (current model was trained on only 486 images).
+    3. Increase accuracy of the icon detection model by improving training data quality.
+    4. Fine-tune the image captioning model for more accurate UI descriptions.
+    5. Fine-tune an LLM for generating UI code from detected elements.
 
 ---
 
