@@ -14,7 +14,7 @@
    Runs YOLO (trained to detect `View` containers, `Text`, `ImageView` icons/images, and `Line` elements) on the input image.
 
 2. **Cropping & Processing**  
-   - **Text boxes**: Crop each box and use a deep neural network (DNN) to enhance the text region, then perform OCR and apply a spell checker to correct mistakes.  
+   - **Text boxes**: Crop each box and use a deep neural network (DNN) to enhance the text region, then perform OCR (by using EasyOCR) and apply a spell checker to correct mistakes.  
    - **View/Line boxes**: Extract background color and alpha information.  
    - **ImageView boxes**: Determine if the element is an icon-like graphic or a real image (e.g., a person or a car).
 
@@ -27,7 +27,7 @@
 
 The ML model creates a long description of the screenshot that can be used for various purposes:
 
-1. **Code Generation**: Provide structured UI details for LLMs that need vision-based input.  
+1. **Code Generation**: Provide structured UI details for LLMs that don't have vision-based input or their vision capabilities are limited.  
 2. **Device Control**: Automate interactions by detecting exact coordinates of all elements.  
 3. **Accessibility**: Help visually impaired users understand the UI structure.
 
@@ -62,13 +62,17 @@ And don't forget to include your HuggingFace and OpenAI tokens if you use blip2 
 
 Also, to use this version you need to install llama-3.2-11b via ollama.
 
-## Plans
+---
 
-    * Fine-tune the image captioning model for more accurate UI descriptions.
-    * Fine-tune an LLM for generating UI code from detected elements.
-    * Make the image captioning functionality optional.
-    * Increase accuracy of the YOLO model (current model was trained on only 486 images).
-    * Increase accuracy of the icon detection model by improving training data quality.
+## Future plans
+
+    1. Make the image captioning functionality optional.
+    2. Increase accuracy of the YOLO model (current model was trained on only 486 images).
+    3. Increase accuracy of the icon detection model by improving training data quality.
+    4. Fine-tune the image captioning model for more accurate UI descriptions.
+    5. Fine-tune an LLM for generating UI code from detected elements.
+
+---
 
 ## Examples
 
@@ -79,9 +83,13 @@ people a false impression of the accuracy of the model. The examples you see
 are approximately the standard result that can usually be obtained using this
 model.
 
+---
+
 ## Contributing
 
 Pull requests are welcome! 
+
+---
 
 ## License
 
