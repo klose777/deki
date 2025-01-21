@@ -1,409 +1,423 @@
-Image path: ./bb_2.jpeg
+Image path: ./input/bb_2.jpeg
 Image Size: width=1080, height=2179
 ********
-View: region_1_class_0 (View)
-Coordinates: x_min=84, y_min=674, x_max=290, y_max=875
-Size: width=206, height=201
-1. The background color of the container is crimson.
-2. The container is opaque.
-********
-View: region_2_class_0 (View)
-Coordinates: x_min=31, y_min=351, x_max=1031, y_max=462
-Size: width=1000, height=111
-1. The background color of the container is whitesmoke.
-2. The container is opaque.
-********
-View: region_3_class_0 (View)
-Coordinates: x_min=281, y_min=507, x_max=990, y_max=595
-Size: width=709, height=88
-1. The background color of the container is whitesmoke.
-2. The container is opaque.
-********
-View: region_4_class_0 (View)
-Coordinates: x_min=549, y_min=1137, x_max=1026, y_max=1611
-Size: width=477, height=474
-1. The background color of the container is white.
-2. The container is opaque.
-********
-View: region_5_class_0 (View)
-Coordinates: x_min=59, y_min=640, x_max=528, y_max=1112
-Size: width=469, height=472
-1. The background color of the container is white.
-2. The container is opaque.
-********
-View: region_6_class_0 (View)
-Coordinates: x_min=56, y_min=1633, x_max=528, y_max=2105
-Size: width=472, height=472
-1. The background color of the container is white.
-2. The container is opaque.
-********
-Text: region_7_class_2 (Text)
-Coordinates: x_min=36, y_min=239, x_max=363, y_max=320
-Size: width=327, height=81
-Extracted Text: Partners
-Corrected Text: Partners
-********
-View: region_8_class_0 (View)
-Coordinates: x_min=59, y_min=1139, x_max=528, y_max=1609
-Size: width=469, height=470
-1. The background color of the container is white.
-2. The container is opaque.
-********
-Image: region_9_class_1 (ImageView)
-Coordinates: x_min=976, y_min=242, x_max=1045, y_max=307
-Size: width=69, height=65
-Prediction: Icon/Mobile UI Element
-The two horizontal lines with circles in between are likely a button or slider, possibly used for scrolling or navigation within an application. However, without further context or information, it is impossible to determine their exact purpose.
-********
-Text: region_10_class_2 (Text)
-Coordinates: x_min=84, y_min=901, x_max=257, y_max=947
-Size: width=173, height=46
-Extracted Text: Umico_ 8 ' az
-Corrected Text: Umico_ 8 ' a
-********
-Text: region_11_class_2 (Text)
-Coordinates: x_min=645, y_min=1038, x_max=890, y_max=1084
-Size: width=245, height=46
-Extracted Text: 0% up to 6 mos
-Corrected Text: i up to 6 most
-********
-Text: region_12_class_2 (Text)
-Coordinates: x_min=150, y_min=1037, x_max=412, y_max=1084
-Size: width=262, height=47
-Extracted Text: 0% up to 24 mos
-Corrected Text: i up to 24 most
-********
-View: region_13_class_0 (View)
-Coordinates: x_min=553, y_min=632, x_max=1024, y_max=1114
-Size: width=471, height=482
-1. The background color of the container is white.
-2. The container is opaque.
-********
-Text: region_14_class_2 (Text)
-Coordinates: x_min=148, y_min=2029, x_max=413, y_max=2075
-Size: width=265, height=46
-Extracted Text: 0% up to 18 mos
-Corrected Text: i up to 18 most
-********
-Text: region_15_class_2 (Text)
-Coordinates: x_min=149, y_min=1532, x_max=412, y_max=1580
-Size: width=263, height=48
-Extracted Text: 0% up to 12 mos
-Corrected Text: i up to 12 most
-********
-Image: region_16_class_1 (ImageView)
-Coordinates: x_min=70, y_min=523, x_max=128, y_max=577
-Size: width=58, height=54
-Prediction: Icon/Mobile UI Element
-The image shows two blurry red stars, one larger and one smaller. They are likely part of an app's user interface (UI) or a game, but without further context it is impossible to determine exactly what they represent. 
-
-**Design Elements:**
-
-*   **Color:** Red
-*   **Shape:** Stars
-*   **Size:** Two different sizes
-*   **Blurry:** Both stars appear blurry
-
-**Possible Functions:**
-
-*   **App Navigation:** The two stars could be used as navigation buttons, with the larger star leading to a main menu or home screen and the smaller star leading to a secondary menu or settings.
-*   **Game Mechanics:** In a game, the two stars could represent different levels or challenges. The larger star might unlock more difficult levels, while the smaller star unlocks easier ones.
-*   **UI Elements:** They might also be used as UI elements in an app, such as icons for different features or functions.
-
-**Conclusion:**
-
-Without more information about the context in which these stars appear, it is difficult to say what they represent. However, based on their design and possible functions, it seems likely that they are part of a mobile app's user interface (UI) or game mechanics.
-********
-Text: region_17_class_2 (Text)
-Coordinates: x_min=577, y_min=1886, x_max=866, y_max=1940
-Size: width=289, height=54
-Extracted Text: DAMAT TWEEN
-Corrected Text: daman TWEEN
-********
-View: region_18_class_0 (View)
-Coordinates: x_min=56, y_min=2129, x_max=532, y_max=2178
-Size: width=476, height=49
-1. The background color of the container is white.
-2. The container is opaque.
-********
-Image: region_19_class_1 (ImageView)
-Coordinates: x_min=94, y_min=1530, x_max=141, y_max=1579
-Size: width=47, height=49
-Prediction: Icon/Mobile UI Element
-The symbol in the image represents a percentage sign, denoting a percentage or ratio. It is commonly used in various contexts, including statistics and calculations.
-
-**Key Functionality**
-
-* Indicates a proportion of something, e.g., 25% off
-* Displays data as a fraction of a whole, e.g., "the price increased by 10%"
-********
-Text: region_20_class_2 (Text)
-Coordinates: x_min=576, y_min=1394, x_max=761, y_max=1444
-Size: width=185, height=50
-Extracted Text: Ali & Nino
-Corrected Text: all & nine
-********
-Text: region_21_class_2 (Text)
-Coordinates: x_min=83, y_min=1891, x_max=232, y_max=1940
-Size: width=149, height=49
-Extracted Text: Kontakt
-Corrected Text: contact
-********
-View: region_22_class_0 (View)
-Coordinates: x_min=552, y_min=2129, x_max=1028, y_max=2178
-Size: width=476, height=49
-1. The background color of the container is white.
-2. The container is opaque.
-********
-Text: region_23_class_2 (Text)
-Coordinates: x_min=578, y_min=898, x_max=949, y_max=952
-Size: width=371, height=54
-Extracted Text: Trendyol Azarbaycan
-Corrected Text: trendy Azarbaycan
-********
-Text: region_24_class_2 (Text)
-Coordinates: x_min=375, y_min=525, x_max=963, y_max=581
-Size: width=588, height=56
-Extracted Text: Clothing, jewelry and accessories
-Corrected Text: clothing jewelry and accessories
-********
-Text: region_25_class_2 (Text)
-Coordinates: x_min=574, y_min=1746, x_max=786, y_max=1782
-Size: width=212, height=36
-Extracted Text: DA MAT | TWEEN
-Corrected Text: a MAT | TWEEN
-********
-Image: region_26_class_1 (ImageView)
-Coordinates: x_min=65, y_min=385, x_max=111, y_max=430
-Size: width=46, height=45
-Prediction: Icon/Mobile UI Element
-The image shows a magnifying glass icon, which is commonly used in search bars or other interfaces where text needs to be highlighted. Its purpose is to indicate that the user can zoom in on something and highlight it for better readability. This feature is often associated with mobile devices but is also found in desktop applications.
-********
-Text: region_27_class_2 (Text)
-Coordinates: x_min=129, y_min=383, x_max=281, y_max=436
-Size: width=152, height=53
-Extracted Text: Search
-Corrected Text: Search
-********
-View: region_28_class_0 (View)
-Coordinates: x_min=45, y_min=507, x_max=260, y_max=593
-Size: width=215, height=86
-1. The background color of the container is whitesmoke.
-2. The container is opaque.
-********
-Text: region_29_class_2 (Text)
-Coordinates: x_min=645, y_min=2030, x_max=700, y_max=2069
-Size: width=55, height=39
-Extracted Text: 2%
-Corrected Text: i
-********
-Image: region_30_class_1 (ImageView)
-Coordinates: x_min=94, y_min=2025, x_max=142, y_max=2074
-Size: width=48, height=49
-Prediction: Icon/Mobile UI Element
-The image depicts a red circle with a white slash through its center, resembling a minus sign or percentage symbol. This icon is commonly used in mobile user interfaces as a navigation button to return to the main menu or dismiss an alert.
-********
-Text: region_31_class_2 (Text)
-Coordinates: x_min=85, y_min=1398, x_max=193, y_max=1443
-Size: width=108, height=45
-Extracted Text: Bravo
-Corrected Text: Bravo
-********
-Text: region_32_class_2 (Text)
-Coordinates: x_min=140, y_min=529, x_max=228, y_max=574
-Size: width=88, height=45
-Extracted Text: New
-Corrected Text: New
-********
-Text: region_33_class_2 (Text)
-Coordinates: x_min=646, y_min=1963, x_max=891, y_max=2008
-Size: width=245, height=45
-Extracted Text: 0% up to 6 mos
-Corrected Text: i up to 6 most
-********
-Image: region_34_class_1 (ImageView)
-Coordinates: x_min=590, y_min=1530, x_max=636, y_max=1577
-Size: width=46, height=47
-Prediction: Icon/Mobile UI Element
-The circular icon resembles a red, glowing eyeball. It is likely a button designed for use in a dark environment.
-********
-Image: region_35_class_1 (ImageView)
-Coordinates: x_min=588, y_min=1034, x_max=635, y_max=1082
-Size: width=47, height=48
-Prediction: Icon/Mobile UI Element
-The mobile UI element in the image appears to be a button with an ellipsis icon, indicating that it can be expanded or contracted to display more information.
-
-**Icon Description**
-
-* The icon is located at the top right corner of the screen.
-* It consists of three horizontal dots arranged in a row.
-* A red circle surrounds the icon.
-********
-Image: region_36_class_1 (ImageView)
-Coordinates: x_min=836, y_min=22, x_max=885, y_max=69
-Size: width=49, height=47
-Prediction: Icon/Mobile UI Element
-The image depicts a WiFi signal strength icon, typically used to indicate when your device is connected to a WiFi network and its current internet speed.
-
-This type of symbol is commonly seen in modern smartphones, tablets, and other mobile devices to help users identify the status of their WiFi connection.
-********
-Image: region_37_class_1 (ImageView)
-Coordinates: x_min=308, y_min=521, x_max=373, y_max=582
-Size: width=65, height=61
-Prediction: Icon/Mobile UI Element
-The mobile UI element in this image is a green t-shirt with a round neckline and short sleeves. It has no buttons or other embellishments, and its color is a medium shade of green that's similar to mint. The shirt appears to be displayed against a white background.
-********
-Image: region_38_class_1 (ImageView)
-Coordinates: x_min=590, y_min=2027, x_max=636, y_max=2074
-Size: width=46, height=47
-Prediction: Icon/Mobile UI Element
-The mobile UI element in the image appears to be a circular button with a red vertical bar in the center, likely used for navigation or interacting with an application.
-********
-View: region_39_class_0 (View)
-Coordinates: x_min=85, y_min=1663, x_max=289, y_max=1867
-Size: width=204, height=204
-1. The background color of the container is crimson.
-2. The container is opaque.
-********
-Image: region_40_class_1 (ImageView)
-Coordinates: x_min=95, y_min=1035, x_max=141, y_max=1082
-Size: width=46, height=47
-Prediction: Icon/Mobile UI Element
-The mobile UI element in the image appears to be a percentage symbol, likely used to indicate a progress bar or display a percentage value within an app or website.
-
-**Key Features:**
-
-* A red circle with a white percent sign at its center
-* The percent sign is slightly blurry due to being zoomed out
-* The background of the image is plain white
-********
-Text: region_41_class_2 (Text)
-Coordinates: x_min=601, y_min=751, x_max=764, y_max=794
-Size: width=163, height=43
-Extracted Text: trendyol
-Corrected Text: trendy
-********
-Image: region_42_class_1 (ImageView)
-Coordinates: x_min=236, y_min=23, x_max=285, y_max=71
-Size: width=49, height=48
-Prediction: Icon/Mobile UI Element
-This symbol is a "reply arrow". It allows users to reply to a message, for example in an instant messaging application.
-
-The arrow points left and can also be found as "reply" or "response" buttons. The "reply" function enables the user to respond directly to the original sender of a message.
-********
-Image: region_43_class_1 (ImageView)
-Coordinates: x_min=886, y_min=23, x_max=930, y_max=70
-Size: width=44, height=47
-Prediction: Icon/Mobile UI Element
-The mobile UI element in this image is a circular black icon featuring a diagonal line through its center, indicating "no" or "prohibited". This symbol is commonly used to indicate that an action cannot be performed.
-********
-Text: region_44_class_2 (Text)
-Coordinates: x_min=722, y_min=1529, x_max=944, y_max=1579
-Size: width=222, height=50
-Extracted Text: 7 1m = 3.33
-Corrected Text: 7 am = 3.33
-********
-View: region_45_class_0 (View)
-Coordinates: x_min=577, y_min=660, x_max=787, y_max=875
-Size: width=210, height=215
-1. The background color of the container is darkorange.
-2. The container is opaque.
-********
-Text: region_46_class_2 (Text)
-Coordinates: x_min=717, y_min=2026, x_max=942, y_max=2074
-Size: width=225, height=48
-Extracted Text: X 1m = 1.33
-Corrected Text: X am = 1.33
-********
-Image: region_47_class_1 (ImageView)
-Coordinates: x_min=1025, y_min=515, x_max=1079, y_max=586
-Size: width=54, height=71
-Prediction: Icon/Mobile UI Element
-The mobile UI element depicted in the image appears to be a white square with rounded corners and a green outline, which may represent an open box or folder. It is unclear what the purpose of this icon is without more context.
-********
-Image: region_48_class_1 (ImageView)
-Coordinates: x_min=135, y_min=736, x_max=239, y_max=808
-Size: width=104, height=72
-Prediction: Icon/Mobile UI Element
-The image shows a white, semi-circular shape that appears to be part of a larger design or interface. Given its simplicity and lack of context, it's challenging to provide a definitive description of how this element would function in a user interface without additional information about the application or program it's associated with.
-********
-Image: region_49_class_1 (ImageView)
-Coordinates: x_min=580, y_min=1169, x_max=788, y_max=1375
-Size: width=208, height=206
-Prediction: Icon/Mobile UI Element
-There is no mobile UI element in this image, but rather a circular logo for a bookstore called "Ali & Nino Book House" written in English and Azerbaijani. The logo has a red circle and red lines behind the text, which makes it stand out from the white background.
-********
-Image: region_50_class_1 (ImageView)
-Coordinates: x_min=91, y_min=1677, x_max=286, y_max=1870
-Size: width=195, height=193
-Prediction: Icon/Mobile UI Element
-The mobile UI element depicted in the image is a button featuring a smiley face and an arrow pointing to the right, likely meant to represent "like" or "share." The button's design suggests its purpose is to facilitate user interaction with content within the application, enabling users to express their approval or appreciation for it.
-********
-Image: region_51_class_1 (ImageView)
-Coordinates: x_min=588, y_min=1960, x_max=636, y_max=2008
-Size: width=48, height=48
-Prediction: Icon/Mobile UI Element
-The mobile UI element in the image is a red circle with a white slash through it, representing "not available" or "not allowed". This symbol indicates that an action or feature is currently not accessible. It is often used as a visual cue to inform users of this status.
-********
-Image: region_52_class_1 (ImageView)
-Coordinates: x_min=289, y_min=31, x_max=320, y_max=64
-Size: width=31, height=33
-Prediction: Icon/Mobile UI Element
-The image appears to depict a small, circular object with a dark center and lighter outer edges, similar in appearance to a black hole or void. The object is centered within the image, but its size relative to the surrounding space is unclear due to the lack of scale markers. The background color is gray, which could be intended to represent either space or an abstract concept such as emptiness or nothingness.
-********
-Text: region_53_class_2 (Text)
-Coordinates: x_min=648, y_min=1533, x_max=700, y_max=1575
-Size: width=52, height=42
-Extracted Text: 5%
-Corrected Text: i
-********
-View: region_54_class_0 (View)
-Coordinates: x_min=92, y_min=2161, x_max=280, y_max=2178
-Size: width=188, height=17
-1. The background color of the container is teal.
-2. The container is opaque.
-********
-Image: region_55_class_1 (ImageView)
-Coordinates: x_min=722, y_min=1527, x_max=770, y_max=1579
-Size: width=48, height=52
-Prediction: Icon/Mobile UI Element
-The image depicts a grey, blurred airplane icon with its wings pointing upwards. It appears to be a button or link for navigating to an "airplane mode" section of the user's phone. The airplane is rendered in greyscale, appearing slightly blurry and pixelated, giving it a shadowy appearance against the white background.
-********
-Line: region_56_class_3 (Line)
-Coordinates: x_min=488, y_min=195, x_max=591, y_max=211
-Size: width=103, height=16
-1. The color of the line is white.
-2. The line is opaque.
-********
-Image: region_57_class_1 (ImageView)
-Coordinates: x_min=93, y_min=1182, x_max=290, y_max=1371
-Size: width=197, height=189
-Prediction: Icon/Mobile UI Element
-The mobile UI element in this image is an icon with a green background and white hexagon outline. It may represent settings or customization options. The design is simple, yet effective, making it easily recognizable as a button for users to interact with.
-********
-Image: region_58_class_1 (ImageView)
-Coordinates: x_min=648, y_min=1533, x_max=700, y_max=1575
-Size: width=52, height=42
-Prediction: Icon/Mobile UI Element
-The image displays a percentage sign with a numeral 5 in front of it, indicating that something is five percent of something else.
-
-It would make sense for there to be some kind of data or text next to the percentage sign and number, as it's not very useful on its own, but without more context, it's hard to say exactly what.
-********
-Text: region_59_class_2 (Text)
+Text: region_1_class_2 (Text)
 Coordinates: x_min=923, y_min=21, x_max=1055, y_max=73
 Size: width=132, height=52
 Extracted Text: 35%
 Corrected Text: 35%
 ********
-Text: region_60_class_2 (Text)
+Image: region_2_class_1 (ImageView)
+Coordinates: x_min=836, y_min=22, x_max=885, y_max=69
+Size: width=49, height=47
+Prediction: Icon/Mobile UI Element
+The UI element in this image is a wifi signal icon, consisting of three lines that curve outward from one another. The middle line is thinner than the outer two and contains a small black dot at its center. There are shadows underneath all parts of the design, suggesting it may have been taken from an actual device. This icon likely indicates whether or not there is WiFi connection available on this particular device.
+********
+Image: region_3_class_1 (ImageView)
+Coordinates: x_min=886, y_min=23, x_max=930, y_max=70
+Size: width=44, height=47
+Prediction: Icon/Mobile UI Element
+The mobile UI element shown in the image is a "no symbol" button, typically used for canceling or removing an action from being performed. It is often found in the top-right corner of an app's screen and can be tapped by users when they want to exit a particular feature, undo their last action, or dismiss a notification without taking any further actions.
+********
+Image: region_4_class_1 (ImageView)
+Coordinates: x_min=236, y_min=23, x_max=285, y_max=71
+Size: width=49, height=48
+Prediction: Icon/Mobile UI Element
+The arrow shown in the image is a "Next" button, which can be used for navigation. It appears as a dark grey arrow pointing to the right with a white outline.
+
+This type of button is commonly found in various contexts such as:
+
+• Navigating through websites or applications
+• Scrolling through long documents or lists
+
+The arrow's direction suggests that it will lead users to the next page, section, or item.
+********
+Image: region_5_class_1 (ImageView)
+Coordinates: x_min=1017, y_min=26, x_max=1052, y_max=69
+Size: width=35, height=43
+Prediction: Icon/Mobile UI Element
+The image appears to show a white pill bottle cap with a black lid, which is likely used for opening and closing the container.
+
+**Key Features:**
+
+* White color of the pill bottle cap
+* Black color of the lid
+* The presence of a small white object inside the bottle (possibly a pill)
+* A clear glass or plastic bottle visible behind the cap
+********
+Image: region_6_class_1 (ImageView)
+Coordinates: x_min=289, y_min=31, x_max=320, y_max=64
+Size: width=31, height=33
+Prediction: Icon/Mobile UI Element
+The image appears to show a mobile UI button in the form of an ellipsis (three dots), which is likely used for navigation or opening a menu in a mobile application. The button is circular and positioned at the bottom right corner of the screen, with two smaller circles located above it. The background of the image is grey.
+
+Here are some key features of the button:
+
+*   **Shape:** Circular
+*   **Color:** Grey
+*   **Position:** Bottom right corner of the screen
+*   **Additional Elements:**
+    *   Two smaller circles above the main circle
+    *   Ellipsis (three dots) within the main circle
+
+Overall, the image suggests that the button is designed to be easily accessible and recognizable on a mobile device.
+********
+Line: region_7_class_3 (Line)
+Coordinates: x_min=488, y_min=195, x_max=591, y_max=211
+Size: width=103, height=16
+1. The color of the line is white.
+2. The line is opaque.
+********
+Text: region_8_class_2 (Text)
+Coordinates: x_min=36, y_min=239, x_max=363, y_max=320
+Size: width=327, height=81
+Extracted Text: Partners
+Corrected Text: Partners
+********
+Image: region_9_class_1 (ImageView)
+Coordinates: x_min=976, y_min=242, x_max=1045, y_max=307
+Size: width=69, height=65
+Prediction: Icon/Mobile UI Element
+The depicted icon is a slider, which allows users to select from two values by dragging it horizontally. The top circle denotes one option and the bottom circle denotes another. This type of control enables users to adjust settings or make selections in an intuitive manner.
+********
+View: region_10_class_0 (View)
+Coordinates: x_min=31, y_min=351, x_max=1031, y_max=462
+Size: width=1000, height=111
+1. The background color of the container is whitesmoke.
+2. The container is opaque.
+********
+Text: region_11_class_2 (Text)
+Coordinates: x_min=129, y_min=383, x_max=281, y_max=436
+Size: width=152, height=53
+Extracted Text: Search
+Corrected Text: Search
+********
+Image: region_12_class_1 (ImageView)
+Coordinates: x_min=65, y_min=385, x_max=111, y_max=430
+Size: width=46, height=45
+Prediction: Icon/Mobile UI Element
+The magnifying glass symbol is a common design element in mobile apps and websites, allowing users to search for specific content or text within larger screens.
+
+**Key Features:**
+
+* Typically located in the top-right corner of the screen
+* Enables users to quickly find information without having to scroll through an entire page or list of results
+********
+View: region_13_class_0 (View)
+Coordinates: x_min=281, y_min=507, x_max=990, y_max=595
+Size: width=709, height=88
+1. The background color of the container is whitesmoke.
+2. The container is opaque.
+********
+View: region_14_class_0 (View)
+Coordinates: x_min=45, y_min=507, x_max=260, y_max=593
+Size: width=215, height=86
+1. The background color of the container is whitesmoke.
+2. The container is opaque.
+********
+Image: region_15_class_1 (ImageView)
+Coordinates: x_min=1025, y_min=515, x_max=1079, y_max=586
+Size: width=54, height=71
+Prediction: Icon/Mobile UI Element
+The image depicts a green rectangular button with rounded corners in the lower-right corner of the screen.
+
+The button is slightly larger than one-third of the height and width of the entire screen, which is white. The button appears to have no text or icon. It is unclear what it does, but it may be used for scrolling down.
+********
+Image: region_16_class_1 (ImageView)
+Coordinates: x_min=308, y_min=521, x_max=373, y_max=582
+Size: width=65, height=61
+Prediction: Icon/Mobile UI Element
+The mobile UI element in this image is a greenish-blue t-shirt with rounded edges and no collar or sleeves. The background of the image is white.
+
+It appears to be an icon used for selecting a t-shirt in a mobile application.
+********
+Image: region_17_class_1 (ImageView)
+Coordinates: x_min=70, y_min=523, x_max=128, y_max=577
+Size: width=58, height=54
+Prediction: Icon/Mobile UI Element
+The picture shows a blurry star icon in pink color, which is likely used for navigation purposes within an application or website. It may also represent bookmarking or favorite functionality. The presence of two stars suggests that there might be multiple bookmarks or favorites available for the user to access. However, due to its blurriness, it's challenging to determine the exact purpose or context in which this icon is used without additional information.
+********
+Text: region_18_class_2 (Text)
+Coordinates: x_min=375, y_min=525, x_max=963, y_max=581
+Size: width=588, height=56
+Extracted Text: Clothing, jewelry and accessories
+Corrected Text: clothing jewelry and accessories
+********
+Text: region_19_class_2 (Text)
+Coordinates: x_min=140, y_min=529, x_max=228, y_max=574
+Size: width=88, height=45
+Extracted Text: New
+Corrected Text: New
+********
+View: region_20_class_0 (View)
+Coordinates: x_min=553, y_min=632, x_max=1024, y_max=1114
+Size: width=471, height=482
+1. The background color of the container is white.
+2. The container is opaque.
+********
+View: region_21_class_0 (View)
+Coordinates: x_min=59, y_min=640, x_max=528, y_max=1112
+Size: width=469, height=472
+1. The background color of the container is white.
+2. The container is opaque.
+********
+View: region_22_class_0 (View)
+Coordinates: x_min=579, y_min=659, x_max=786, y_max=875
+Size: width=207, height=216
+1. The background color of the container is darkorange.
+2. The container is opaque.
+********
+View: region_23_class_0 (View)
+Coordinates: x_min=84, y_min=674, x_max=290, y_max=875
+Size: width=206, height=201
+1. The background color of the container is crimson.
+2. The container is opaque.
+********
+Image: region_24_class_1 (ImageView)
+Coordinates: x_min=135, y_min=736, x_max=239, y_max=808
+Size: width=104, height=72
+Prediction: Icon/Mobile UI Element
+The mobile UI element in the image is a white, half-circle shape centered against a bright pink background with no other visible elements or features. This graphic design appears to represent a 'smiley face', conveying a sense of friendliness and approachability.
+
+This simple yet effective design is likely used as an icon or button within a user interface (UI) to evoke positive emotions in users.
+********
+Text: region_25_class_2 (Text)
+Coordinates: x_min=601, y_min=751, x_max=764, y_max=794
+Size: width=163, height=43
+Extracted Text: trendyol
+Corrected Text: trendy
+********
+Text: region_26_class_2 (Text)
+Coordinates: x_min=578, y_min=898, x_max=949, y_max=952
+Size: width=371, height=54
+Extracted Text: Trendyol Azarbaycan
+Corrected Text: trendy Azarbaycan
+********
+Text: region_27_class_2 (Text)
+Coordinates: x_min=84, y_min=901, x_max=257, y_max=947
+Size: width=173, height=46
+Extracted Text: Umico_ 8 ' az
+Corrected Text: Umico_ 8 ' a
+********
+Image: region_28_class_1 (ImageView)
+Coordinates: x_min=588, y_min=1034, x_max=635, y_max=1082
+Size: width=47, height=48
+Prediction: Icon/Mobile UI Element
+The mobile UI element depicted in the image is a red circle with a white diagonal slash through its center, which could indicate "do not click" or "do not select." This symbol may be used to prevent users from accidentally selecting an item that they don't intend to choose.
+
+**Potential Uses:**
+
+* In a dropdown menu, it might prevent accidental selection of an unwanted option.
+* On a button, it might alert the user that clicking on this button will have unintended consequences.
+********
+Image: region_29_class_1 (ImageView)
+Coordinates: x_min=95, y_min=1035, x_max=141, y_max=1082
+Size: width=46, height=47
+Prediction: Icon/Mobile UI Element
+The image depicts a percentage sign, which is a common symbol used in numerical contexts. It represents a proportion or fraction of something and is often used to indicate a percentage value.
+
+**Key Features:**
+
+* The symbol is typically represented by the character "%".
+* It can also be displayed as a graphic icon, such as the one shown in the image.
+* The purpose of using a percentage sign is to convey a ratio or proportion.
+********
+Text: region_30_class_2 (Text)
+Coordinates: x_min=150, y_min=1037, x_max=412, y_max=1084
+Size: width=262, height=47
+Extracted Text: 0% up to 24 mos
+Corrected Text: i up to 24 most
+********
+Text: region_31_class_2 (Text)
+Coordinates: x_min=645, y_min=1038, x_max=890, y_max=1084
+Size: width=245, height=46
+Extracted Text: 0% up to 6 mos
+Corrected Text: i up to 6 most
+********
+View: region_32_class_0 (View)
+Coordinates: x_min=549, y_min=1137, x_max=1026, y_max=1611
+Size: width=477, height=474
+1. The background color of the container is white.
+2. The container is opaque.
+********
+View: region_33_class_0 (View)
+Coordinates: x_min=59, y_min=1139, x_max=528, y_max=1609
+Size: width=469, height=470
+1. The background color of the container is white.
+2. The container is opaque.
+********
+Image: region_34_class_1 (ImageView)
+Coordinates: x_min=580, y_min=1169, x_max=788, y_max=1375
+Size: width=208, height=206
+Prediction: Icon/Mobile UI Element
+The UI element in question is a red circle with a thin line around it, serving as an icon or button for the logo of Ali & Nino Book House. It's positioned at the top of the logo and features two horizontal lines that intersect each other in the middle, creating a unique design that sets it apart from other logos.
+********
+Image: region_35_class_1 (ImageView)
+Coordinates: x_min=93, y_min=1182, x_max=290, y_max=1371
+Size: width=197, height=189
+Prediction: Icon/Mobile UI Element
+The green square with rounded edges and white outline has a design that is reminiscent of an octagon, but its inner shape is not fully defined as such. The center of the design features six sides outlined in white, with one side slightly recessed to create a hollow effect. Overall, the image appears to be a stylized representation of an octagon or hexagon.
+********
+Text: region_36_class_2 (Text)
+Coordinates: x_min=576, y_min=1394, x_max=761, y_max=1444
+Size: width=185, height=50
+Extracted Text: Ali & Nino
+Corrected Text: all & nine
+********
+Text: region_37_class_2 (Text)
+Coordinates: x_min=85, y_min=1398, x_max=193, y_max=1443
+Size: width=108, height=45
+Extracted Text: Bravo
+Corrected Text: Bravo
+********
+Image: region_38_class_1 (ImageView)
+Coordinates: x_min=722, y_min=1527, x_max=770, y_max=1579
+Size: width=48, height=52
+Prediction: Icon/Mobile UI Element
+The image shows an X-shaped button, which is likely a close or cancel button. The button's gray color and blurry appearance suggest that it might be a part of a larger interface or application.
+********
+Text: region_39_class_2 (Text)
+Coordinates: x_min=722, y_min=1529, x_max=944, y_max=1579
+Size: width=222, height=50
+Extracted Text: 7 1m = 3.33
+Corrected Text: 7 am = 3.33
+********
+Image: region_40_class_1 (ImageView)
+Coordinates: x_min=94, y_min=1530, x_max=141, y_max=1579
+Size: width=47, height=49
+Prediction: Icon/Mobile UI Element
+The mobile UI element in the image is a percentage symbol within an orange circle, representing progress or completion in a task or activity. It likely indicates that 0% of the process has been completed.
+
+**Key Features:**
+
+* A simple and straightforward design
+* The percentage symbol inside an orange circle makes it easy to identify at a glance
+********
+Image: region_41_class_1 (ImageView)
+Coordinates: x_min=590, y_min=1530, x_max=636, y_max=1577
+Size: width=46, height=47
+Prediction: Icon/Mobile UI Element
+The mobile UI element in this image depicts a black circle with a red vertical line that likely represents an eye tracker that displays where you are looking at on a screen. It is commonly used by apps and games to help users navigate through menus or tutorials.
+********
+Text: region_42_class_2 (Text)
+Coordinates: x_min=149, y_min=1532, x_max=412, y_max=1580
+Size: width=263, height=48
+Extracted Text: 0% up to 12 mos
+Corrected Text: i up to 12 most
+********
+Text: region_43_class_2 (Text)
+Coordinates: x_min=648, y_min=1533, x_max=700, y_max=1575
+Size: width=52, height=42
+Extracted Text: 5%
+Corrected Text: i
+********
+Image: region_44_class_1 (ImageView)
+Coordinates: x_min=648, y_min=1533, x_max=700, y_max=1575
+Size: width=52, height=42
+Prediction: Icon/Mobile UI Element
+The image shows a percentage symbol and a number, "5%." It appears to represent 5 percent of something, but there is no context as to what it represents. The text is in black against a white background.
+
+This image would likely be found on an electronic device, such as a mobile phone or tablet, as part of an application or website that requires the user to input a percentage value.
+********
+View: region_45_class_0 (View)
+Coordinates: x_min=56, y_min=1633, x_max=528, y_max=2105
+Size: width=472, height=472
+1. The background color of the container is white.
+2. The container is opaque.
+********
+View: region_46_class_0 (View)
+Coordinates: x_min=85, y_min=1663, x_max=289, y_max=1867
+Size: width=204, height=204
+1. The background color of the container is crimson.
+2. The container is opaque.
+********
+Image: region_47_class_1 (ImageView)
+Coordinates: x_min=91, y_min=1677, x_max=286, y_max=1870
+Size: width=195, height=193
+Prediction: Icon/Mobile UI Element
+The app icon is a bright red square with rounded corners. It features a white smiley face that is incomplete, with an arrow pointing left in place of the mouth. The background color is bright red and it sits on a white background. It has a rounded square shape.
+********
+Text: region_48_class_2 (Text)
+Coordinates: x_min=574, y_min=1746, x_max=786, y_max=1782
+Size: width=212, height=36
+Extracted Text: DA MAT | TWEEN
+Corrected Text: a MAT | TWEEN
+********
+Text: region_49_class_2 (Text)
+Coordinates: x_min=577, y_min=1886, x_max=866, y_max=1940
+Size: width=289, height=54
+Extracted Text: DAMAT TWEEN
+Corrected Text: daman TWEEN
+********
+Text: region_50_class_2 (Text)
+Coordinates: x_min=83, y_min=1891, x_max=232, y_max=1940
+Size: width=149, height=49
+Extracted Text: Kontakt
+Corrected Text: contact
+********
+Image: region_51_class_1 (ImageView)
+Coordinates: x_min=588, y_min=1960, x_max=636, y_max=2008
+Size: width=48, height=48
+Prediction: Icon/Mobile UI Element
+The image depicts a red circular button featuring a slash and two dots, potentially serving as a "cancel" or "dismiss" option in a mobile app. The button is centered against a white background.
+********
+Text: region_52_class_2 (Text)
+Coordinates: x_min=646, y_min=1963, x_max=891, y_max=2008
+Size: width=245, height=45
+Extracted Text: 0% up to 6 mos
+Corrected Text: i up to 6 most
+********
+Image: region_53_class_1 (ImageView)
+Coordinates: x_min=94, y_min=2025, x_max=142, y_max=2074
+Size: width=48, height=49
+Prediction: Icon/Mobile UI Element
+The image depicts a red circle with a white slash in the center, which is commonly used as an icon for canceling or deleting a file from a computer. It can also be used to indicate "no" or "not allowed." This symbol is often seen on mobile devices and computers when performing actions such as deleting files, canceling transactions, or closing applications.
+********
+Text: region_54_class_2 (Text)
 Coordinates: x_min=720, y_min=2026, x_max=772, y_max=2074
 Size: width=52, height=48
 Extracted Text: X
 Corrected Text: X
 ********
-Image: region_61_class_1 (ImageView)
-Coordinates: x_min=1017, y_min=26, x_max=1052, y_max=69
-Size: width=35, height=43
+Text: region_55_class_2 (Text)
+Coordinates: x_min=717, y_min=2026, x_max=942, y_max=2074
+Size: width=225, height=48
+Extracted Text: X 1m = 1.33
+Corrected Text: X am = 1.33
+********
+Image: region_56_class_1 (ImageView)
+Coordinates: x_min=590, y_min=2027, x_max=636, y_max=2074
+Size: width=46, height=47
 Prediction: Icon/Mobile UI Element
-The image depicts an icon of a pill bottle cap, with the text "5" written inside it. This suggests that the app is related to medication or health management, and the number 5 may indicate the number of pills remaining in the bottle or a specific dosage instruction. However, without more context, the exact meaning of the icon remains unclear.
+The mobile UI element in the image appears to be a circular button with a red glow at its center, likely serving as an indicator or status light for notifications, charging, or other purposes within the app. Its color and shape are typical of such indicators used in various apps to draw attention to important events.
+********
+Text: region_57_class_2 (Text)
+Coordinates: x_min=148, y_min=2029, x_max=413, y_max=2075
+Size: width=265, height=46
+Extracted Text: 0% up to 18 mos
+Corrected Text: i up to 18 most
+********
+Text: region_58_class_2 (Text)
+Coordinates: x_min=645, y_min=2030, x_max=700, y_max=2069
+Size: width=55, height=39
+Extracted Text: 2%
+Corrected Text: i
+********
+View: region_59_class_0 (View)
+Coordinates: x_min=56, y_min=2129, x_max=532, y_max=2178
+Size: width=476, height=49
+1. The background color of the container is white.
+2. The container is opaque.
+********
+View: region_60_class_0 (View)
+Coordinates: x_min=552, y_min=2129, x_max=1028, y_max=2178
+Size: width=476, height=49
+1. The background color of the container is white.
+2. The container is opaque.
+********
+View: region_61_class_0 (View)
+Coordinates: x_min=92, y_min=2161, x_max=280, y_max=2178
+Size: width=188, height=17
+1. The background color of the container is teal.
+2. The container is opaque.
 ********

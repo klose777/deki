@@ -136,28 +136,25 @@ bounding_boxes = []
 for line in lines:
     parts = line.strip().split()
     class_id = int(parts[0])
-    normalized_coords = list(map(float, parts[1:]))
-    x_center_norm, y_center_norm, width_norm, height_norm = normalized_coords
+    x_center_norm, y_center_norm, width_norm, height_norm = map(float, parts[1:])
 
-    # Convert normalized coordinates to pixel values
+    # Convert normalized coordinates to absolute pixel values
     x_center = x_center_norm * image_width
     y_center = y_center_norm * image_height
     box_width = width_norm * image_width
     box_height = height_norm * image_height
 
-    # Calculate bounding box coordinates
-    x_min = int(x_center - (box_width / 2))
-    y_min = int(y_center - (box_height / 2))
-    x_max = int(x_center + (box_width / 2))
-    y_max = int(y_center + (box_height / 2))
+    x_min = int(x_center - box_width / 2)
+    y_min = int(y_center - box_height / 2)
+    x_max = int(x_center + box_width / 2)
+    y_max = int(y_center + box_height / 2)
 
-    # Ensure coordinates are within image bounds
+    # Clamp the coordinates
     x_min = max(0, x_min)
     y_min = max(0, y_min)
     x_max = min(image_width - 1, x_max)
     y_max = min(image_height - 1, y_max)
 
-    # Append the bounding box coordinates along with the class ID
     bounding_boxes.append((x_min, y_min, x_max, y_max, class_id))
 
 # %%

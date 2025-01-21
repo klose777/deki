@@ -103,6 +103,9 @@ def init():
             'index': idx
         })
 
+    # sort by y-coordinate
+    boxes.sort(key=lambda b: b['bbox'][1] - (b['bbox'][3] / 2))
+
     # Perform NMS
     keep_indices = []
     suppressed = [False] * len(boxes)
