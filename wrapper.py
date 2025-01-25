@@ -18,6 +18,7 @@ def init():
     parser.add_argument('--icon_detection_path', required=True, help='Path to the icon detection model.')
     parser.add_argument('--cache_directory', default='./models_cache', help='Cache directory for models.')
     parser.add_argument('--huggingface_token', default='your_token', help='Hugging Face token for model downloads.')
+    parser.add_argument('--no-captioning', action='store_true', help='Disable any image captioning')
 
     args = parser.parse_args()
 
@@ -55,8 +56,12 @@ def init():
         '--cache_directory', args.cache_directory,
         '--huggingface_token', args.huggingface_token
     ]
+    # Append optional flags if specified
     if args.save_images:
         script_command.append('--save_images')
+
+    if args.no_captioning:
+        script_command.append('--no-captioning')
 
     subprocess.run(script_command, check=True)
 

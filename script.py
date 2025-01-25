@@ -28,6 +28,7 @@ parser.add_argument('--save_images', action='store_true', help='Flag to save int
 parser.add_argument('--icon_detection_path', default='./icon-image-detection-model.keras', help='Path to the icon detection model.')
 parser.add_argument('--cache_directory', default='./models_cache', help='Cache directory for models.')
 parser.add_argument('--huggingface_token', default='your_token', help='Hugging Face token for model downloads.')
+parser.add_argument('--no-captioning', action='store_true', help='Disable any image captioning.')
 
 args = parser.parse_args()
 
@@ -39,6 +40,7 @@ save_images = args.save_images
 icon_model_path = args.icon_detection_path
 cache_directory = args.cache_directory
 huggingface_token = args.huggingface_token
+no_captioning = args.no_captioning
 
 # %%
 # Initialize the super-resolution model if available
@@ -101,33 +103,40 @@ def is_model_downloaded(model_name, cache_directory):
     model_path = os.path.join(cache_directory, model_name.replace('/', '_'))
     return os.path.exists(model_path)
 
-# Load the selected model
-if model_to_use == 'blip':
-    print("Loading BLIP-2 model...")
-    model_name = "Salesforce/blip2-opt-2.7b"
+# Conditionally load the captioning model only if no-captioning is False
+if not no_captioning:
+    if model_to_use == 'blip':
+        print("Loading BLIP-2 model...")
+        model_name = "Salesforce/blip2-opt-2.7b"
 
-    if not is_model_downloaded(model_name, cache_directory):
-        print("Model not found in cache. Downloading...")
+        if not is_model_downloaded(model_name, cache_directory):
+            print("Model not found in cache. Downloading...")
+        else:
+            print("Model found in cache. Loading...")
+
+        # Load the processor and model
+        processor = AutoProcessor.from_pretrained(
+            model_name,
+            use_auth_token=huggingface_token,
+            cache_dir=cache_directory,
+            resume_download=True
+        )
+        model = Blip2ForConditionalGeneration.from_pretrained(
+            model_name,
+            device_map='auto',
+            torch_dtype=torch.float16,
+            use_auth_token=huggingface_token,
+            cache_dir=cache_directory,
+            resume_download=True
+        ).to(device)
     else:
-        print("Model found in cache. Loading...")
-
-    # Load the processor and model
-    processor = AutoProcessor.from_pretrained(
-        model_name,
-        use_auth_token=huggingface_token,
-        cache_dir=cache_directory,
-        resume_download=True
-    )
-    model = Blip2ForConditionalGeneration.from_pretrained(
-        model_name,
-        device_map='auto',
-        torch_dtype=torch.float16,
-        use_auth_token=huggingface_token,
-        cache_dir=cache_directory,
-        resume_download=True
-    ).to(device)
+        print("Using LLaMA model via Ollama")
+        processor = None  # no processor needed for LLaMA external call
+        model = None
 else:
-    print("Using LLaMA model via Ollama")
+    print("--no-captioning flag is set; skipping model loading.")
+    processor = None
+    model = None
 
 # %%
 # Initialize a list to store bounding boxes with their class IDs
@@ -173,38 +182,41 @@ captions_filename = f"{base_name}_regions_captions.txt"
 captions_file_path = os.path.join(result_dir, captions_filename)
 
 # %%
-# Function to open and optionally upscale an image
 def open_and_upscale_image(image_path, class_id, upscale_imageview=True):
     """
     Opens an image and optionally upscales it based on the class ID and flags.
-
-    Parameters:
-    - image_path (str): Path to the image file.
-    - class_id (int): Class ID of the image region.
-    - upscale_imageview (bool): Flag to determine if upscaling is needed for ImageView class (class_id == 1).
-
-    Returns:
-    - upscaled_image: The upscaled image if upscaling is applied, otherwise the original image.
+    Skips (or limits) super-resolution for very large images.
     """
-    # For class_id 0 (View), we need to handle alpha channel
+
+    # Thresholds for deciding when to skip or limit SR
+    MAX_WIDTH = 200
+    MAX_HEIGHT = 200
+
     if class_id == 0:
         # PIL to handle images with alpha channel
         pil_image = Image.open(image_path).convert('RGBA')
 
         # Check if upscaling is needed
         if sr:
-            # Convert PIL image to OpenCV format
-            image_cv = cv2.cvtColor(np.array(pil_image), cv2.COLOR_RGBA2BGR)
-            # Upscale the image using super-resolution
-            upscaled_image_cv = sr.upsample(image_cv)
-            # Convert back to PIL image
-            upscaled_image = Image.fromarray(cv2.cvtColor(upscaled_image_cv, cv2.COLOR_BGR2RGBA))
+            # If the original image is too large, skip or limit the upscale
+            if pil_image.width > MAX_WIDTH or pil_image.height > MAX_HEIGHT:
+                print(f"Skipping 4× super-resolution for large View (size={pil_image.width}×{pil_image.height}).")
+                # Either keep the original size or do a smaller upscale
+                upscaled_image = pil_image
+            else:
+                # Upscale the image using super-resolution
+                image_cv = cv2.cvtColor(np.array(pil_image), cv2.COLOR_RGBA2BGR)
+                upscaled_image_cv = sr.upsample(image_cv)
+                upscaled_image = Image.fromarray(cv2.cvtColor(upscaled_image_cv, cv2.COLOR_BGR2RGBA))
         else:
-            # Upscale using PIL's resize if super-resolution is not available
-            upscaled_image = pil_image.resize(
+            if pil_image.width > MAX_WIDTH or pil_image.height > MAX_HEIGHT:
+                print(f"Skipping 4× super-resolution for large View (size={pil_image.width}×{pil_image.height}).")
+                upscaled_image = pil_image
+            else:
+                upscaled_image = pil_image.resize(
                 (pil_image.width * 4, pil_image.height * 4),
                 resample=Image.BICUBIC
-            )
+                )
         return upscaled_image
 
     else:
@@ -222,8 +234,20 @@ def open_and_upscale_image(image_path, class_id, upscale_imageview=True):
             return image
         else:
             if sr:
-                # Upscale the image using super-resolution
-                upscaled_image = sr.upsample(image)
+                # Check thresholds for large images
+                h, w = image.shape[:2]
+                if w > MAX_WIDTH or h > MAX_HEIGHT:
+                    print(f"Skipping 4× super-resolution for large region (size={w}×{h}).")
+                    # Either keep the original or do smaller upscale
+                    # upscaled_image = image
+                    upscaled_image = cv2.resize(
+                        image,
+                        (w * 2, h * 2),
+                        interpolation=cv2.INTER_CUBIC
+                    )
+                else:
+                    # Use the 4× super-resolution
+                    upscaled_image = sr.upsample(image)
                 return upscaled_image
             else:
                 # Upscale using OpenCV's resize if super-resolution is not available
@@ -233,6 +257,7 @@ def open_and_upscale_image(image_path, class_id, upscale_imageview=True):
                     interpolation=cv2.INTER_CUBIC
                 )
                 return upscaled_image
+
 # %%
 # Function to call Ollama with a given prompt
 def call_ollama(prompt_text, idx, task_type):
@@ -355,78 +380,95 @@ def process_region(image_path, idx, class_id, captions_file, x_min, y_min, x_max
     print(f"Coordinates: x_min={x_min}, y_min={y_min}, x_max={x_max}, y_max={y_max}")
     print(f"Size: width={width}, height={height}")
 
+    # ImageView
     if class_id == 1:
-        # ImageView
-        upscaled_image = open_and_upscale_image(image_path, class_id)
-        if upscaled_image is None:
-            return
-
-        # Convert to the input format expected by the icon detection model
-        icon_input_size = (224, 224)  # Adjust as needed
-
-        icon_image = cv2.resize(upscaled_image, icon_input_size)
-        icon_image = cv2.cvtColor(icon_image, cv2.COLOR_BGR2RGB)  # Convert BGR to RGB
-        icon_image = icon_image / 255.0  # Normalize the image
-        icon_image = np.expand_dims(icon_image, axis=0)  # Add batch dimension
-
-        # Use the icon detection model to predict if it is icon or a standard image (image of real people, cars etc.)
-        prediction = icon_model.predict(icon_image)
-        print(f"Prediction output for Region {idx+1}: {prediction}")
-        print(f"Prediction shape: {prediction.shape}")
-
-        # Interpret the prediction
-        if prediction.shape == (1, 1):
-            # Sigmoid activation (probability of class 1)
-            probability = prediction[0][0]
-            threshold = 0.5  # Adjust the threshold if needed
-            predicted_class = 1 if probability >= threshold else 0
-            print(f"Probability of class 1: {probability}")
-        elif prediction.shape == (1, 2):
-            # Softmax activation
-            predicted_class = np.argmax(prediction[0])
-            print(f"Class probabilities: {prediction[0]}")
+        if no_captioning:
+            # If no-captioning is enabled, skip icon detection and caption generation
+            print(f"(Icon detection and captioning disabled by --no-captioning.)")
+            with open(captions_file, 'a', encoding='utf-8') as f:
+                f.write(f"Image: region_{idx+1}_class_{class_id} ({class_name})\n")
+                f.write(f"Coordinates: x_min={x_min}, y_min={y_min}, x_max={x_max}, y_max={y_max}\n")
+                f.write(f"Size: width={width}, height={height}\n")
+                f.write(BARRIER)
         else:
-            # Handle other cases or raise an error
-            print(f"Unexpected prediction shape: {prediction.shape}")
-            return
+            upscaled_image = open_and_upscale_image(image_path, class_id)
+            if upscaled_image is None:
+                return
 
-        # Set the prompt based on the prediction
-        if predicted_class == 1:
-            # It's an icon/mobile UI element
-            prompt_text = "Describe the mobile UI element on this image. Try to be short."
-        else:
-            # It's a normal image
-            prompt_text = "Describe what is in the image. This image is not related to icons or mobile UI elements. Try to be short."
+            # Convert to the input format expected by the icon detection model
+            icon_input_size = (224, 224)  # Adjust as needed
 
-        print(f"Prediction for Region {idx+1}: {'Icon/Mobile UI Element' if predicted_class == 1 else 'Normal Image'}")
-        print(f"Using prompt: {prompt_text}")
+            icon_image = cv2.resize(upscaled_image, icon_input_size)
+            icon_image = cv2.cvtColor(icon_image, cv2.COLOR_BGR2RGB)  # Convert BGR to RGB
+            icon_image = icon_image / 255.0  # Normalize the image
+            icon_image = np.expand_dims(icon_image, axis=0)  # Add batch dimension
 
-        # Save the processed image temporarily
-        temp_image_path = os.path.abspath(os.path.join(cropped_imageview_images_dir, f"imageview_{idx+1}.jpg"))
-        cv2.imwrite(temp_image_path, upscaled_image)
+            # Use the icon detection model to predict if it is icon or a standard image (image of real people, cars etc.)
+            prediction = icon_model.predict(icon_image)
+            print(f"Prediction output for Region {idx+1}: {prediction}")
+            print(f"Prediction shape: {prediction.shape}")
 
-        # Generate caption using the selected model
-        if model_to_use == 'blip':
-            response = generate_caption_blip(temp_image_path)
-        else:
-            # For LLaMA, incorporate the prompt
-            prompt_with_image = prompt_text + " " + temp_image_path
-            response = call_ollama(prompt_with_image, idx, 'description')
-            if response is None:
-                response = "Error generating description"
+            # Interpret the prediction
+            if prediction.shape == (1, 1):
+                # Sigmoid activation (probability of class 1)
+                probability = prediction[0][0]
+                threshold = 0.5  # Adjust the threshold if needed
+                predicted_class = 1 if probability >= threshold else 0
+                print(f"Probability of class 1: {probability}")
+            elif prediction.shape == (1, 2):
+                # Softmax activation
+                predicted_class = np.argmax(prediction[0])
+                print(f"Class probabilities: {prediction[0]}")
+            else:
+                # Handle other cases or raise an error
+                print(f"Unexpected prediction shape: {prediction.shape}")
+                return
 
-        # Write to captions file
-        with open(captions_file, 'a', encoding='utf-8') as f:
-            f.write(f"Image: region_{idx+1}_class_{class_id} ({class_name})\n")
-            f.write(f"Coordinates: x_min={x_min}, y_min={y_min}, x_max={x_max}, y_max={y_max}\n")
-            f.write(f"Size: width={width}, height={height}\n")
-            f.write(f"Prediction: {'Icon/Mobile UI Element' if predicted_class == 1 else 'Normal Image'}\n")
-            f.write(f"{response}\n")
-            f.write(BARRIER)
+            # Set the prompt based on the prediction
+            if predicted_class == 1:
+                # It's an icon/mobile UI element
+                prompt_text = "Describe the mobile UI element on this image. Try to be short."
+            else:
+                # It's a normal image
+                prompt_text = "Describe what is in the image. This image is not related to icons or mobile UI elements. Try to be short."
 
-        print(f"Caption for Region {idx+1} written to {captions_file}")
-        if os.path.exists(temp_image_path) and save_images == False:
-            os.remove(temp_image_path)
+            print(f"Prediction for Region {idx+1}: {'Icon/Mobile UI Element' if predicted_class == 1 else 'Normal Image'}")
+            if not no_captioning:
+                print(f"Using prompt: {prompt_text}")
+
+            # Save the processed image temporarily
+            temp_image_path = os.path.abspath(os.path.join(cropped_imageview_images_dir, f"imageview_{idx+1}.jpg"))
+            cv2.imwrite(temp_image_path, upscaled_image)
+
+            if not no_captioning:
+                if model_to_use == 'blip':
+                    response = generate_caption_blip(temp_image_path)
+                else:
+                    # For LLaMA, incorporate the prompt
+                    prompt_with_image = prompt_text + " " + temp_image_path
+                    response = call_ollama(prompt_with_image, idx, 'description')
+                    if response is None:
+                        response = "Error generating description"
+            else:
+                print(f"(Captioning disabled by --no-captioning.)")
+                response = ""
+
+            # Write to captions file
+            with open(captions_file, 'a', encoding='utf-8') as f:
+                f.write(f"Image: region_{idx+1}_class_{class_id} ({class_name})\n")
+                f.write(f"Coordinates: x_min={x_min}, y_min={y_min}, x_max={x_max}, y_max={y_max}\n")
+                f.write(f"Size: width={width}, height={height}\n")
+                f.write(f"Prediction: {'Icon/Mobile UI Element' if predicted_class == 1 else 'Normal Image'}\n")
+                f.write(f"{response}\n")
+                f.write(BARRIER)
+
+            capt = "Description"
+            if not no_captioning:
+                capt = "Caption"
+
+            print(f"{capt} for Region {idx+1} written to {captions_file}")
+            if os.path.exists(temp_image_path) and save_images == False:
+                os.remove(temp_image_path)
 
     elif class_id == 2:
         # Text
