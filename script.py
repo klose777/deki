@@ -201,7 +201,6 @@ def open_and_upscale_image(image_path, class_id, upscale_imageview=True):
             # If the original image is too large, skip or limit the upscale
             if pil_image.width > MAX_WIDTH or pil_image.height > MAX_HEIGHT:
                 print(f"Skipping 4× super-resolution for large View (size={pil_image.width}×{pil_image.height}).")
-                # Either keep the original size or do a smaller upscale
                 upscaled_image = pil_image
             else:
                 # Upscale the image using super-resolution
@@ -238,13 +237,7 @@ def open_and_upscale_image(image_path, class_id, upscale_imageview=True):
                 h, w = image.shape[:2]
                 if w > MAX_WIDTH or h > MAX_HEIGHT:
                     print(f"Skipping 4× super-resolution for large region (size={w}×{h}).")
-                    # Either keep the original or do smaller upscale
-                    # upscaled_image = image
-                    upscaled_image = cv2.resize(
-                        image,
-                        (w * 2, h * 2),
-                        interpolation=cv2.INTER_CUBIC
-                    )
+                    upscaled_image = image
                 else:
                     # Use the 4× super-resolution
                     upscaled_image = sr.upsample(image)
