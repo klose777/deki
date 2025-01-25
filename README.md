@@ -54,6 +54,16 @@ python3.12 wrapper.py \
   --icon_detection_path ./icon-image-detection-model.keras
 ```
 
+Full pipeline without image detection and image captioning (much faster)
+
+```bash
+python3.12 wrapper.py \
+   --input_image ./res/mfa_1.jpeg \
+   --weights_file ./best.pt \
+   --icon_detection_path ./icon-image-detection-model.keras \
+   --no-captioning
+```
+
 YOLO-Only
 
 ```bash
@@ -159,7 +169,7 @@ Current YOLO model accuracy:
 
 ## Future plans
 
-    1. Make the image captioning functionality optional.
+    1. Make the image captioning functionality optional. Done.
     2. Increase accuracy of the YOLO model by increasing the size of the training dataset up to 1000 images/labels. 
     3. Increase accuracy of the icon detection model by improving training data quality.
     4. Fine-tune the image captioning model for more accurate UI descriptions.
