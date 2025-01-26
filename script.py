@@ -12,7 +12,8 @@ from collections import Counter
 import torch
 from transformers import AutoProcessor, Blip2ForConditionalGeneration
 import tensorflow as tf  
-import argparse  # Import argparse for command-line argument parsing
+import argparse  # command-line argument parsing
+import json
 
 # %%
 # Define constants
@@ -29,6 +30,7 @@ parser.add_argument('--icon_detection_path', default='./icon-image-detection-mod
 parser.add_argument('--cache_directory', default='./models_cache', help='Cache directory for models.')
 parser.add_argument('--huggingface_token', default='your_token', help='Hugging Face token for model downloads.')
 parser.add_argument('--no-captioning', action='store_true', help='Disable any image captioning.')
+parser.add_argument('--json', dest='output_json', action='store_true', help='Output the image data in JSON format')
 
 args = parser.parse_args()
 
@@ -41,6 +43,20 @@ icon_model_path = args.icon_detection_path
 cache_directory = args.cache_directory
 huggingface_token = args.huggingface_token
 no_captioning = args.no_captioning
+output_json = args.output_json # bool
+
+# %%
+# Store "image" info + "elements".
+json_output = {
+    "image": {
+        "path": input_image_path,
+        "size": {
+            "width": None,
+            "height": None
+        }
+    },
+    "elements": []
+}
 
 # %%
 # Initialize the super-resolution model if available
@@ -373,16 +389,33 @@ def process_region(image_path, idx, class_id, captions_file, x_min, y_min, x_max
     print(f"Coordinates: x_min={x_min}, y_min={y_min}, x_max={x_max}, y_max={y_max}")
     print(f"Size: width={width}, height={height}")
 
+    # Build base dictionary for JSON if --json flag is passed
+    region_dict = {
+        "id": f"region_{idx+1}_class_{class_id}",
+        "type": class_name,
+        "coordinates": {
+            "x_min": x_min,
+            "y_min": y_min,
+            "x_max": x_max,
+            "y_max": y_max
+        },
+        "size": {
+            "width": width,
+            "height": height
+        }
+    }
+
     # ImageView
     if class_id == 1:
         if no_captioning:
-            # If no-captioning is enabled, skip icon detection and caption generation
             print(f"(Icon detection and captioning disabled by --no-captioning.)")
-            with open(captions_file, 'a', encoding='utf-8') as f:
-                f.write(f"Image: region_{idx+1}_class_{class_id} ({class_name})\n")
-                f.write(f"Coordinates: x_min={x_min}, y_min={y_min}, x_max={x_max}, y_max={y_max}\n")
-                f.write(f"Size: width={width}, height={height}\n")
-                f.write(BARRIER)
+            # For JSON, only set the type, no additional info
+            if not output_json:
+                with open(captions_file, 'a', encoding='utf-8') as f:
+                    f.write(f"Image: region_{idx+1}_class_{class_id} ({class_name})\n")
+                    f.write(f"Coordinates: x_min={x_min}, y_min={y_min}, x_max={x_max}, y_max={y_max}\n")
+                    f.write(f"Size: width={width}, height={height}\n")
+                    f.write(BARRIER)
         else:
             upscaled_image = open_and_upscale_image(image_path, class_id)
             if upscaled_image is None:
@@ -446,20 +479,19 @@ def process_region(image_path, idx, class_id, captions_file, x_min, y_min, x_max
                 print(f"(Captioning disabled by --no-captioning.)")
                 response = ""
 
-            # Write to captions file
-            with open(captions_file, 'a', encoding='utf-8') as f:
-                f.write(f"Image: region_{idx+1}_class_{class_id} ({class_name})\n")
-                f.write(f"Coordinates: x_min={x_min}, y_min={y_min}, x_max={x_max}, y_max={y_max}\n")
-                f.write(f"Size: width={width}, height={height}\n")
-                f.write(f"Prediction: {'Icon/Mobile UI Element' if predicted_class == 1 else 'Normal Image'}\n")
-                f.write(f"{response}\n")
-                f.write(BARRIER)
+            # For JSON, store the predicted type + the description
+            region_dict["prediction"] = "Icon/Mobile UI Element" if predicted_class == 1 else "Normal Image"
+            region_dict["description"] = response
 
-            capt = "Description"
-            if not no_captioning:
-                capt = "Caption"
+            if not output_json:
+                with open(captions_file, 'a', encoding='utf-8') as f:
+                    f.write(f"Image: region_{idx+1}_class_{class_id} ({class_name})\n")
+                    f.write(f"Coordinates: x_min={x_min}, y_min={y_min}, x_max={x_max}, y_max={y_max}\n")
+                    f.write(f"Size: width={width}, height={height}\n")
+                    f.write(f"Prediction: {'Icon/Mobile UI Element' if predicted_class == 1 else 'Normal Image'}\n")
+                    f.write(f"{response}\n")
+                    f.write(BARRIER)
 
-            print(f"{capt} for Region {idx+1} written to {captions_file}")
             if os.path.exists(temp_image_path) and save_images == False:
                 os.remove(temp_image_path)
 
@@ -487,14 +519,18 @@ def process_region(image_path, idx, class_id, captions_file, x_min, y_min, x_max
         print(f"Extracted Text for Region {idx+1}: {text}")
         print(f"Corrected Text for Region {idx+1}: {corrected_text}")
 
-        # Write the text to the captions file
-        with open(captions_file, 'a', encoding='utf-8') as f:
-            f.write(f"Text: region_{idx+1}_class_{class_id} ({class_name})\n")
-            f.write(f"Coordinates: x_min={x_min}, y_min={y_min}, x_max={x_max}, y_max={y_max}\n")
-            f.write(f"Size: width={width}, height={height}\n")
-            f.write(f"Extracted Text: {text}\n")
-            f.write(f"Corrected Text: {corrected_text}\n")
-            f.write(BARRIER)
+        # For JSON
+        region_dict["extractedText"] = text
+        region_dict["correctedText"] = corrected_text
+
+        if not output_json:
+            with open(captions_file, 'a', encoding='utf-8') as f:
+                f.write(f"Text: region_{idx+1}_class_{class_id} ({class_name})\n")
+                f.write(f"Coordinates: x_min={x_min}, y_min={y_min}, x_max={x_max}, y_max={y_max}\n")
+                f.write(f"Size: width={width}, height={height}\n")
+                f.write(f"Extracted Text: {text}\n")
+                f.write(f"Corrected Text: {corrected_text}\n")
+                f.write(BARRIER)
 
         print(f"Text for Region {idx+1} written to {captions_file}")
 
@@ -535,13 +571,19 @@ def process_region(image_path, idx, class_id, captions_file, x_min, y_min, x_max
         response += f"2. The container is {transparency}."
         print(response)
 
-        # Write to captions file
-        with open(captions_file, 'a', encoding='utf-8') as f:
-            f.write(f"View: region_{idx+1}_class_{class_id} ({class_name})\n")
-            f.write(f"Coordinates: x_min={x_min}, y_min={y_min}, x_max={x_max}, y_max={y_max}\n")
-            f.write(f"Size: width={width}, height={height}\n")
-            f.write(f"{response}\n")
-            f.write(BARRIER)
+        # For JSON
+        region_dict["properties"] = [
+            f"The background color of the container is {color_name}.",
+            f"The container is {transparency}."
+        ]
+
+        if not output_json:
+            with open(captions_file, 'a', encoding='utf-8') as f:
+                f.write(f"View: region_{idx+1}_class_{class_id} ({class_name})\n")
+                f.write(f"Coordinates: x_min={x_min}, y_min={y_min}, x_max={x_max}, y_max={y_max}\n")
+                f.write(f"Size: width={width}, height={height}\n")
+                f.write(f"{response}\n")
+                f.write(BARRIER)
 
         print(f"Analysis for Region {idx+1} written to {captions_file}")
 
@@ -602,13 +644,19 @@ def process_region(image_path, idx, class_id, captions_file, x_min, y_min, x_max
         response += f"2. The line is {transparency}."
         print(response)
 
-        # Write to captions file
-        with open(captions_file, 'a', encoding='utf-8') as f:
-            f.write(f"Line: region_{idx+1}_class_{class_id} ({class_name})\n")
-            f.write(f"Coordinates: x_min={x_min}, y_min={y_min}, x_max={x_max}, y_max={y_max}\n")
-            f.write(f"Size: width={width}, height={height}\n")
-            f.write(f"{response}\n")
-            f.write(BARRIER)
+        # For JSON
+        region_dict["properties"] = [
+            f"The color of the line is {color_name}.",
+            f"The line is {transparency}."
+        ]
+
+        if not output_json:
+            with open(captions_file, 'a', encoding='utf-8') as f:
+                f.write(f"Line: region_{idx+1}_class_{class_id} ({class_name})\n")
+                f.write(f"Coordinates: x_min={x_min}, y_min={y_min}, x_max={x_max}, y_max={y_max}\n")
+                f.write(f"Size: width={width}, height={height}\n")
+                f.write(f"{response}\n")
+                f.write(BARRIER)
 
         print(f"Details for Line Region {idx+1} written to {captions_file}")
 
@@ -616,18 +664,25 @@ def process_region(image_path, idx, class_id, captions_file, x_min, y_min, x_max
         # For other classes, we can skip or add handling as needed
         print(f"Class ID {class_id} not handled.")
 
+    # Append region_dict to json_output["elements"] if --json
+    if output_json:
+        json_output["elements"].append(region_dict)
+
 def put_image_size_in_output_file(captions_file, input_image_path):
     # Get image size
-    image = cv2.imread(input_image_path)
-    height, width, _ = image.shape
+    image_cv = cv2.imread(input_image_path)
+    height, width, _ = image_cv.shape
 
-    # Write the image size to the captions file, creating it if necessary
-    with open(captions_file, 'w', encoding='utf-8') as f:
-        f.write(f"Image path: {input_image_path}\n")
-        f.write(f"Image Size: width={width}, height={height}\n")
-        f.write(BARRIER)
+    # Store in the JSON structure if --json
+    if output_json:
+        json_output["image"]["size"]["width"] = width
+        json_output["image"]["size"]["height"] = height
+    else:
+        with open(captions_file, 'w', encoding='utf-8') as f:
+            f.write(f"Image path: {input_image_path}\n")
+            f.write(f"Image Size: width={width}, height={height}\n")
+            f.write(BARRIER)
 
-    # Print to console for verification
     print(f"Image path: {input_image_path}")
     print(f"Image Size: width={width}, height={height}")
     print(BARRIER)
@@ -662,3 +717,12 @@ for idx, (x_min, y_min, x_max, y_max, class_id) in enumerate(bounding_boxes):
 
     if os.path.exists(cropped_image_path) and save_images == False:
         os.remove(cropped_image_path)
+
+# %%
+# Dump JSON to the output file
+if output_json:
+    json_output_filename = os.path.join(result_dir, f"{base_name}.json")
+    with open(json_output_filename, 'w', encoding='utf-8') as f:
+        json.dump(json_output, f, indent=2, ensure_ascii=False)
+    print(f"JSON output written to {json_output_filename}")
+

@@ -19,6 +19,7 @@ def init():
     parser.add_argument('--cache_directory', default='./models_cache', help='Cache directory for models.')
     parser.add_argument('--huggingface_token', default='your_token', help='Hugging Face token for model downloads.')
     parser.add_argument('--no-captioning', action='store_true', help='Disable any image captioning')
+    parser.add_argument('--json', dest='output_json', action='store_true', help='Output the image data in JSON format')
 
     args = parser.parse_args()
 
@@ -62,6 +63,9 @@ def init():
 
     if args.no_captioning:
         script_command.append('--no-captioning')
+
+    if args.output_json:
+        script_command.append('--json')
 
     subprocess.run(script_command, check=True)
 

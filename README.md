@@ -49,19 +49,19 @@ Full Pipeline
 
 ```bash
 python3.12 wrapper.py \
-  --input_image ./bb_1.jpeg \
-  --weights_file ./best.pt \
-  --icon_detection_path ./icon-image-detection-model.keras
+   --input_image ./res/bb_1.jpeg \
+   --weights_file ./best.pt \
+   --icon_detection_path ./icon-image-detection-model.keras
 ```
 
-Full pipeline without image detection and image captioning (much faster)
+Full pipeline without image detection and image captioning (much faster) and with json structured output (recommended)
 
 ```bash
 python3.12 wrapper.py \
-   --input_image ./res/mfa_1.jpeg \
+   --input_image ./res/bb_1.jpeg \
    --weights_file ./best.pt \
    --icon_detection_path ./icon-image-detection-model.keras \
-   --no-captioning
+   --no-captioning --json
 ```
 
 YOLO-Only
@@ -104,7 +104,7 @@ Bounding boxes with classes for bb_2:
 Bounding boxes without classes but with IDs after NMS for bb_2:
 ![example4](output/bb_2_yolo_updated.jpeg)
 
-Text output will look something like this:
+Text output will look something like this (if json and no_captioning are not specified):
 ```text
 Image path: ./bb_1.jpeg
 Image Size: width=1080, height=2178
@@ -151,6 +151,84 @@ Corrected Text: 64 partners
 ********
 ```
 
+And if json and no-captioning are specified the output will look something like this:
+```json
+{
+  "image": {
+    "path": "./res/bb_1.jpeg",
+    "size": {
+      "width": 1080,
+      "height": 2178
+    }
+  },
+  "elements": [
+    {
+      "id": "region_1_class_2",
+      "type": "Text",
+      "coordinates": {
+        "x_min": 830,
+        "y_min": 18,
+        "x_max": 1055,
+        "y_max": 74
+      },
+      "size": {
+        "width": 225,
+        "height": 56
+      },
+      "extractedText": "34%",
+      "correctedText": "34%"
+    },
+    {
+      "id": "region_2_class_1",
+      "type": "ImageView",
+      "coordinates": {
+        "x_min": 25,
+        "y_min": 20,
+        "x_max": 292,
+        "y_max": 75
+      },
+      "size": {
+        "width": 267,
+        "height": 55
+      }
+    },
+    {
+      "id": "region_67_class_2",
+      "type": "Text",
+      "coordinates": {
+        "x_min": 934,
+        "y_min": 2090,
+        "x_max": 1011,
+        "y_max": 2127
+      },
+      "size": {
+        "width": 77,
+        "height": 37
+      },
+      "extractedText": "More",
+      "correctedText": "More"
+    },
+    {
+      "id": "region_68_class_2",
+      "type": "Text",
+      "coordinates": {
+        "x_min": 62,
+        "y_min": 2091,
+        "x_max": 152,
+        "y_max": 2128
+      },
+      "size": {
+        "width": 90,
+        "height": 37
+      },
+      "extractedText": "Home",
+      "correctedText": "Home"
+    }
+  ]
+}
+
+```
+
 I have not used the best examples that do not have errors, so as not to give
 people a false impression of the accuracy of the model. The examples you see
 are approximately the standard result that can usually be obtained using this
@@ -174,7 +252,7 @@ Current YOLO model accuracy:
     3. Increase accuracy of the icon detection model by improving training data quality.
     4. Fine-tune the image captioning model for more accurate UI descriptions.
     5. Fine-tune an LLM for generating UI code from detected elements.
-    6. Add the command mode to generate short image description files.
+    6. Add the command mode to generate short image description files. Done.
 
 ---
 
