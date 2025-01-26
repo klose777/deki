@@ -54,7 +54,8 @@ python3.12 wrapper.py \
    --icon_detection_path ./icon-image-detection-model.keras
 ```
 
-Full pipeline without image detection and image captioning (much faster) and with json structured output (recommended)
+Full pipeline without image detection and image captioning (much faster) and
+with json structured output (recommended)
 
 ```bash
 python3.12 wrapper.py \
@@ -62,6 +63,17 @@ python3.12 wrapper.py \
    --weights_file ./best.pt \
    --icon_detection_path ./icon-image-detection-model.keras \
    --no-captioning --json
+```
+
+Full pipeline with image detection and image captioning (llama3.2-vision:11b)
+and with json structured output (recommended)
+
+```bash
+python3.12 wrapper.py \
+   --input_image ./res/gs_1.png \
+   --weights_file ./best.pt \
+   --icon_detection_path ./icon-image-detection-model.keras \
+   --json
 ```
 
 YOLO-Only
@@ -247,16 +259,16 @@ screenshot + deki image description. Without any fine-tuning.
 The generated code is for Android and was placed into the Design Preview in 
 Android Studio without any changes.
 
-Better understanding of sizes (code source: ./res/mfa_1_gpt_4o.md and ./res/mfa_1_gpt_4o_deki.md):
+Better understanding of sizes (source code: ./res/mfa_1_gpt_4o.md and ./res/mfa_1_gpt_4o_deki.md):
 ![example6](./res/mfa_1_comparison.png)
 
-Better structure and coordinates (code source: ./res/mfa_2_gpt_4o.md and ./res/mfa_2_gpt_4o_deki.md):
+Better structure and coordinates (source code: ./res/mfa_2_gpt_4o.md and ./res/mfa_2_gpt_4o_deki.md):
 ![example7](./res/mfa_2_comparison.png)
 
-Better structure (code source: ./res/bb_1_gpt_4o.md and ./res/bb_1_gpt_4o_deki.md):
+Better structure (source code: ./res/bb_1_gpt_4o.md and ./res/bb_1_gpt_4o_deki.md):
 ![example8](./res/bb_1_comparison.png)
 
-Better coordinates (code source: ./res/bb_2_gpt_4o.md and ./res/bb_2_gpt_4o_deki.md):
+Better coordinates (source code: ./res/bb_2_gpt_4o.md and ./res/bb_2_gpt_4o_deki.md):
 ![example9](./res/bb_2_comparison.png)
 
 ---
