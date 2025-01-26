@@ -3,7 +3,7 @@
 **deki** is an ML model (or several models) that detects UI elements in screenshots (such as containers, text, and icons) and provides structured descriptions of those elements. It can help with:
 
 - Generating code by using LLMs that need structured UI information.
-- Automating device interactions by providing precise bounding box coordinates.
+- Automating device interactions by providing precise bounding box coordinates and sizes.
 - Assisting visually impaired users by describing the UI.
 
 ---
@@ -278,6 +278,7 @@ Current YOLO model accuracy:
     4. Fine-tune the image captioning model for more accurate UI descriptions.
     5. Fine-tune an LLM for generating UI code from detected elements.
     6. Add the command mode to generate short image description files. Done.
+    7. Add an example of AI agent that can automate tasks in an Android OS using deki.
 
 ---
 
