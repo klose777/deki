@@ -151,7 +151,7 @@ Corrected Text: 64 partners
 ********
 ```
 
-nnd if --json and --no-captioning are specified the output will look something like this:
+and if --json and --no-captioning are specified the output will look something like this:
 ```json
 {
   "image": {
