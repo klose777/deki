@@ -104,7 +104,7 @@ Bounding boxes with classes for bb_2:
 Bounding boxes without classes but with IDs after NMS for bb_2:
 ![example4](output/bb_2_yolo_updated.jpeg)
 
-Text output will look something like this (if json and no_captioning are not specified):
+Text output will look something like this (if --json and --no_captioning are not specified):
 ```text
 Image path: ./bb_1.jpeg
 Image Size: width=1080, height=2178
@@ -151,7 +151,7 @@ Corrected Text: 64 partners
 ********
 ```
 
-And if json and no-captioning are specified the output will look something like this:
+nnd if --json and --no-captioning are specified the output will look something like this:
 ```json
 {
   "image": {
@@ -243,6 +243,9 @@ structure, coordinates, and view sizes. I used 4 examples for
 comparison. For the experiment, I used the latest GPT-4o model (as of January
 26) to generate code from a screenshot, and then to generate code from the same
 screenshot + deki image description. Without any fine-tuning.
+
+The generated code is for Android and was placed into the Design Preview in 
+Android Studio without any changes.
 
 Better understanding of sizes:
 ![example6](./res/mfa_1_comparison.png)
