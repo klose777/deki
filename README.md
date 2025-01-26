@@ -247,16 +247,16 @@ screenshot + deki image description. Without any fine-tuning.
 The generated code is for Android and was placed into the Design Preview in 
 Android Studio without any changes.
 
-Better understanding of sizes:
+Better understanding of sizes (code source: ./res/mfa_1_gpt_4o.md and ./res/mfa_1_gpt_4o_deki.md):
 ![example6](./res/mfa_1_comparison.png)
 
-Better structure and coordinates:
+Better structure and coordinates (code source: ./res/mfa_2_gpt_4o.md and ./res/mfa_2_gpt_4o_deki.md):
 ![example7](./res/mfa_2_comparison.png)
 
-Better structure:
+Better structure (code source: ./res/bb_1_gpt_4o.md and ./res/bb_1_gpt_4o_deki.md):
 ![example8](./res/bb_1_comparison.png)
 
-Better coordinates:
+Better coordinates (code source: ./res/bb_2_gpt_4o.md and ./res/bb_2_gpt_4o_deki.md):
 ![example9](./res/bb_2_comparison.png)
 
 ---
