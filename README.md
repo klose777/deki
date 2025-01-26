@@ -236,6 +236,28 @@ model.
 
 ---
 
+## Code generation comparison. GPT-4o vision vs GPT-4o + deki
+
+This model can be used by an LLM to better understand an image’s view
+structure, coordinates, and view sizes. I used 4 examples for
+comparison. For the experiment, I used the latest GPT-4o model (as of January
+26) to generate code from a screenshot, and then to generate code from the same
+screenshot + deki image description. Without any fine-tuning.
+
+Better understanding of sizes:
+![example6](./res/mfa_1_comparison.png)
+
+Better structure and coordinates:
+![example7](./res/mfa_2_comparison.png)
+
+Better structure:
+![example8](./res/bb_1_comparison.png)
+
+Better coordinates:
+![example9](./res/bb_2_comparison.png)
+
+---
+
 ## YOLO model accuracy
 
 The base model is a YOLO model that was trained on 486 images and was tested on 60 images.
