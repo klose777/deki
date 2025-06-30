@@ -302,7 +302,8 @@ def generate_caption_blip(image_path):
     # Open the image
     raw_image = Image.open(image_path).convert('RGB')
     # Process the image
-    inputs = processor(images=raw_image, return_tensors="pt").to(device, torch.float16)
+    inputs = processor(images=raw_image, return_tensors="pt")
+    inputs = {k: v.to(device, torch.float16) for k, v in inputs.items()}
     # Generate the caption
     generated_ids = model.generate(**inputs)
     generated_text = processor.batch_decode(generated_ids, skip_special_tokens=True)[0].strip()
